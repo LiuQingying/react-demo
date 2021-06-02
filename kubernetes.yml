@@ -1,0 +1,48 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    workload.user.cattle.io/workloadselector: deployment-mynamespace-appname
+  name: appname
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-mynamespace-appname
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-mynamespace-appname
+    spec:
+      containers:
+      - image: myimage
+        imagePullPolicy: Always
+        name: appname
+      imagePullSecrets:
+      - name: rcn
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["deployment:mynamespace:appname"]'
+    workload.cattle.io/targetWorkloadIdNoop: "true"
+    workload.cattle.io/workloadPortBased: "true"
+  name: appname
+spec:
+  clusterIP: None
+  ports:
+  - name: default
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    workload.user.cattle.io/workloadselector: deployment-mynamespace-appname
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

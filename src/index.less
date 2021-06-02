@@ -1,0 +1,691 @@
+@import './common/styles/common.less';
+@import './common/styles/vars.less';
+@import './common/styles/base.less';
+
+html,
+body,
+:global(#root) {
+  height: 100%;
+  width: 100%;
+}
+:global {
+  .ant-checkbox-wrapper {
+    font-weight: normal;
+  }
+  .ant-radio-wrapper {
+    font-weight: normal;
+  }
+  // 全局覆盖样式，注意.member是最外层样式，可以覆盖一些调整的样式
+  .cycleHeighContainer {
+    border: 1px solid #ddd;
+    .ant-select {
+      float: left;
+      width: auto;
+    }
+    .ant-cascader-picker {
+      float: left;
+      width: auto;
+    }
+  }
+  .outSideModal {
+    .ant-calendar-month-select {
+      background: #108ee9;
+      width: 50px;
+    }
+    .ant-checkbox-wrapper {
+      color: rgba(0, 0, 0, 0.65);
+    }
+    label {
+      font-weight: 400;
+    }
+  }
+  .edit-level-container {
+    .ant-checkbox-wrapper {
+      color: rgba(0, 0, 0, 0.85);
+    }
+    label {
+      font-weight: 200;
+      margin-bottom: 10px;
+    }
+  }
+  .member-container {
+    label {
+      margin-bottom: 24px;
+      margin-right: 20px;
+      font-weight: 400;
+    }
+  }
+  .member {
+    // 弹窗关闭样式覆盖
+    .fade-leave {
+      &.fade-leave-active {
+        animation-name: none;
+      }
+    }
+    .ant-modal-mask {
+      background-color: rgba(0, 0, 0, 0.65);
+    }
+  }
+  // 必填样式
+  .localRequired {
+    label:first-child {
+      &:before {
+        display: inline-block;
+        margin-right: 4px;
+        content: '*';
+        font-family: SimSun;
+        line-height: 1;
+        font-size: 14px;
+        color: #f5222d;
+      }
+    }
+  }
+  // 可展开单元格无可展开项时
+  .noExpand {
+    .ant-table-row-expand-icon {
+      display: none;
+    }
+  }
+  // 可编辑表格
+  .noPage {
+    td .ant-form-item {
+      // 组件margin归零
+      margin-bottom: 0 !important;
+    }
+    .menuEdit {
+      // 详情表格
+      &:before {
+        content: '*';
+        color: #f04134;
+        position: relative;
+        top: 0;
+        right: 2px;
+      }
+    }
+  }
+  .edit-table {
+    height: 39px;
+    line-height: 39px;
+    padding-left: 5px;
+    border: 1px solid transparent;
+    &:hover {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  }
+
+  .ant-select-dropdown {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .ant-select-tree-dropdown {
+    max-height: 140px !important;
+  }
+
+  // 异常订单详情
+  .bread {
+    padding: 16px 32px;
+    margin-bottom: 32px;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    :global {
+      .ant-breadcrumb {
+        .ant-breadcrumb-link {
+          font-size: 12px;
+          color: #666;
+        }
+        span {
+          &:last-child {
+            .ant-breadcrumb-link {
+              font-size: 18px;
+              color: #000;
+            }
+          }
+        }
+      }
+      .ant-form {
+        position: absolute;
+        top: 13px;
+        right: 0;
+      }
+    }
+  }
+  // 动态响应时防止错乱现象
+  .ant-col-xxl-6 {
+    height: 62px;
+  } // ***common style
+  .btn-group {
+    .ant-btn {
+      margin-right: 5px;
+    }
+  }
+  // order style
+  .order-price-form {
+    color: #ff9900;
+    font-weight: 500;
+    font-size: 24px;
+  }
+  .order-price-display {
+    font-weight: 500;
+    font-size: 30px;
+  }
+  // link-btn
+  .btn-link {
+    color: @link-color;
+    margin: 0;
+    padding: 0;
+    border: none;
+    &,
+    &:active,
+    &.active,
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: transparent;
+      .box-shadow(none);
+    }
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: transparent;
+      outline: none;
+    }
+    &:hover,
+    &:focus {
+      color: @link-hover-color;
+      text-decoration: @link-hover-decoration;
+      background-color: transparent;
+      outline: none;
+    }
+    &[disabled],
+    fieldset[disabled] {
+      color: @btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+  // avatar-content styles
+  .avatar-content {
+    display: flex;
+    flex: 1;
+    &-avatar {
+      margin-right: 16px;
+      .ant-avatar {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    &-content {
+      flex: 1 0;
+    }
+    &-title {
+      color: @text-color;
+      margin-bottom: 4px;
+      font-size: 20px;
+      line-height: 1.5;
+      > a {
+        color: @text-color;
+        transition: all 0.3s;
+        &:hover {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+  .detailModal .ant-form-item {
+    margin-bottom: 0;
+  }
+  .vertical-center-modal {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .vertical-center-modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+  }
+
+  .vertical-center-modal .ant-modal {
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    text-align: left;
+  }
+  // 新规样式
+  // 弹窗
+  .ant-modal-content {
+    .ant-modal-header {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      .ant-modal-title {
+        font-size: 16px;
+        line-height: 44px;
+      }
+    }
+    .ant-modal-body {
+      padding: 24px 40px !important;
+    }
+    .ant-modal-footer {
+      //padding-left: 32px;
+      //padding-right: 32px;
+      button + button {
+        margin-left: 16px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .destoryModal {
+    .ant-modal-body {
+      margin-bottom: 26px !important;
+    }
+  }
+
+  .sendCouponModal {
+    .ant-form {
+      margin-left: -52px;
+      .num {
+        margin-left: -12px !important;
+      }
+      .unitName {
+        margin-left: -240px;
+      }
+    }
+  }
+
+  // 表单
+  .ant-form,
+  .ant-form-inline {
+    .ant-form-item {
+      margin-bottom: 20px !important;;
+      .ant-form-item-label {
+        line-height: 32px;
+        padding-left: 20px;
+        padding-bottom: 0;
+        label {
+          margin-bottom: 0;
+          font-weight: normal;
+        }
+        label:after {
+          margin: 0 16px 0 2px;
+        }
+      }
+      .ant-form-item-control-wrapper {
+        min-height: 32px;
+      }
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+  }
+
+  // 菜单
+  .ant-menu {
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  .ant-dropdown-menu-item,
+  .ant-dropdown-menu-item-active {
+    line-height: 32px !important;
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  // 表格
+  .ant-table {
+    .ant-table-thead {
+      th {
+        padding: 9px 12px;
+        font-weight: 600;
+        color: #666666;
+        min-height: 40px;
+      }
+    }
+    .ant-table-tbody {
+      td {
+        padding: 9px 12px;
+        color: #666666;
+        min-height: 40px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  // 按钮
+  .ant-btn {
+    min-width: 80px;
+  }
+
+  // badge
+  .ant-badge {
+    .ant-badge-status-text {
+      font-size: 12px;
+      color: #2a2a2a;
+    }
+    .ant-badge-status-success {
+      color: #87d068;
+    }
+    .ant-badge-status-error {
+      color: #f04134;
+    }
+    .ant-badge-status-default {
+      color: #cccccc;
+    }
+    .ant-badge-status-processing {
+      color: #108ee9;
+    }
+    .ant-badge-status-warning {
+      color: #ff9900;
+    }
+  }
+
+  // divider
+  .ant-divider {
+    &.ant-divider-horizontal {
+      margin: 20px 0;
+    }
+  }
+
+  // search
+  .search {
+    .action-box {
+      margin-bottom: 16px;
+      .ant-btn + .ant-btn {
+        margin-left: 16px;
+      }
+      .search-btn {
+        text-align: right;
+      }
+    }
+    .hidden-item {
+      display: none;
+    }
+    @media (max-width: 1600px) {
+      .hidden-xl {
+        display: none;
+      }
+    }
+  }
+  #visible-all .ant-col-8 {
+    display: block !important;
+  }
+
+  // 机构树选择框定高度只显示一行
+  .components-search {
+    .ant-form-inline > .ant-row .ant-form-item {
+      margin-right: 0;
+      width: 100%;
+    }
+    .ant-form-inline > .ant-row .ant-form-item .ant-form-item-label {
+      width: 118px;
+    }
+    .ant-form-inline > .ant-row .ant-form-item .ant-form-item-control-wrapper {
+      width: calc(~'100% - 118px');
+      .ant-form-item-control button {
+        margin-left: 60px;
+      }
+    }
+    .ant-form-inline .ant-form-item > .ant-form-item-control-wrapper,
+    .ant-form-inline .ant-form-item > .ant-form-item-label {
+      vertical-align: top;
+    }
+    label {
+      font-weight: normal;
+    }
+    form .ant-input-group {
+      display: table;
+    }
+    // 搜索部分适用门店最多展示两行，超过滚动
+    .multiple-select-two-row {
+      .ant-select-selection__rendered {
+        max-height: 56px;
+        overflow-y: scroll;
+        margin-right: 0px!important;
+      }
+    }
+  }
+  .floatRight {
+    float: right;
+  }
+  // 会员列表-批量发券
+  .informWay {
+    .ant-form-item {
+      display: inline-block;
+      width: 40%;
+      margin-left: 3%;
+      margin-bottom: 0;
+      &:first-child {
+        width: 50%;
+        margin-left: 0;
+      }
+    }
+    .ant-btn {
+      min-width: 24px;
+      margin-left: 3%;
+    }
+    .unitName {
+      margin-left: -220px;
+    }
+  }
+  .informWay1 {
+    .ant-form-item {
+      display: inline-block;
+      width: 40%;
+      margin-bottom: 0;
+      &:first-child {
+        width: 54%;
+        margin-left: 0;
+      }
+    }
+    .ant-btn {
+      min-width: 24px;
+      margin-left: 3%;
+    }
+  }
+  .ant-form-item .inlineStored {
+    margin-bottom: 0px !important;
+  }
+  .inlineForm {
+    .ant-form-item {
+      display: inline-block;
+    }
+    .ant-btn {
+      min-width: 24px;
+      margin-left: 3%;
+    }
+  }
+  // 营销模板优惠券加减按钮布局
+  .ant-row {
+    .coupon-button-box {
+      margin-bottom: 0 !important;
+      .ant-col-offset-6 {
+        margin-left: 0 !important;
+      }
+    }
+  }
+  .borderForm > .ant-form-item-control-wrapper {
+    padding: 20px;
+    width: 68%;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    .borderButton {
+      float: right;
+    }
+  }
+  .inlineDiv {
+    .ant-select {
+      display: inline-block !important;
+      width: 56%;
+      &:first-child {
+        width: 36%;
+        margin-right: 16px;
+      }
+    }
+  }
+  .toggle-more {
+    .ant-btn {
+      padding: 0;
+    }
+  }
+  .margin-right-16 {
+    margin-right: 16px !important;
+  }
+  .sendMemberModal {
+    font-size: 12px !important;
+  }
+  .ant-pagination .ant-table-pagination {
+    float: right !important;
+  }
+  .reduceFormItem {
+    .ant-form-item {
+      margin-bottom: 0px !important;
+    }
+  }
+  .errorForm {
+    .ant-form-explain {
+      padding-left: 92px;
+    }
+  }
+  // 时段最外层FormItem包裹样式
+  .timeWarrper {
+    .time {
+      .ant-form-item{
+        margin-bottom: 10px;
+      }
+      .range{
+        &> .ant-form-item-control-wrapper >.has-error .ant-form-explain, .has-error .ant-form-split {
+          position: relative;
+          bottom: 10px;
+        }
+      }
+      .has-feedback{
+        .ant-time-picker-icon, .ant-time-picker-clear{
+          right: 10px;
+        }
+      }
+    }
+    .time:first-child {
+      margin-bottom: 0px !important;
+    }
+  }
+  // 积分时段最外层FormItem包裹样式
+  .timeIntegralWarrper {
+    .time {
+      .ant-form-item{
+        margin-bottom: 10px;
+      }
+      .range{
+        &> .ant-form-item-control-wrapper >.has-error .ant-form-explain, .has-error .ant-form-split {
+          position: relative;
+          bottom: 10px;
+        }
+      }
+      .has-feedback{
+        .ant-time-picker-icon, .ant-time-picker-clear{
+          right: 10px;
+        }
+      }
+    }
+  }
+  .longForm {
+    .ant-form-item-label {
+      &:first-child {
+        width: 136px !important;
+        margin-left: -20px !important;
+      }
+    }
+  }
+  // 固钉
+  .affix {
+    & > div {
+      background-color: rgba(255, 255, 255, 0.8);
+      & > * {
+        margin: 10px 16px 10px 0;
+      }
+    }
+  }
+  .editStored {
+    .ant-select-selection--multiple {
+      max-height: 64px;
+      overflow-y: scroll;
+    }
+  }
+  // 树结构不可选中样式
+  .disabledSelect {
+    .ant-tree-checkbox-checked {
+      .ant-tree-checkbox-inner {
+        background-color: #d9d9d9;
+        border-color: #d9d9d9;
+      }
+      &:hover {
+        .ant-tree-checkbox-inner {
+          background-color: #d9d9d9;
+          border-color: #d9d9d9;
+        }
+      }
+    }
+    .ant-tree-title {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+  .growthRadio {
+    .ant-radio-wrapper {
+      margin-right: 40px;
+    }
+  }
+  .addBtn {
+    border-radius: 4px;
+    border: 1px dashed #cccccc;
+    background-color: #ffffff;
+    padding: 0px 12px;
+    color: #666666;
+    font-size: 12px;
+    line-height: 26px;
+  }
+  .disabledAddBtn {
+    border-radius: 4px;
+    border: 1px dashed #cccccc;
+    background-color: #ffffff;
+    padding: 0px 12px;
+    color: #666666;
+    font-size: 12px;
+    cursor: not-allowed !important;
+  }
+  .templateCheck {
+    .ant-checkbox-group-item {
+      margin-right: 30px;
+    }
+  }
+  // 表单提交部分select超过两行滚动
+  .multiple-select {
+    .ant-select-selection--multiple{
+      max-height: 56px;
+      overflow-y: scroll;
+      margin-right: 0px!important;
+    }
+    // 错误信息
+    .ant-form-explain{
+      margin-top: -10px;
+    }
+  }
+  // 编辑会员信息Modal
+  .editMember {
+    top: 36px !important;
+  }
+  // tooltip气泡宽度
+  .ant-tooltip{
+    max-width: 420px !important;
+  }
+  // 新增优惠券折扣上限, 使用门槛  新增会员权益折扣上限, 折扣门槛
+  .discountLimitType, .ruleType, .thresholdType {
+    .ant-radio-group-outline {
+      margin-bottom: -20px;
+    }
+  }
+}
